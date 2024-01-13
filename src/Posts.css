@@ -1,0 +1,98 @@
+/* Photos.css */
+.photos-container {
+  max-width: 800px;
+  margin: auto;
+  padding: 20px;
+}
+
+.photos-header {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.search-container {
+  margin-bottom: 20px;
+}
+
+.search-container label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.search-container input {
+  width: 100%;
+  padding: 8px;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.add-photo-container {
+  margin-top: 20px;
+}
+
+.add-photo-header {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.add-photo-container form {
+  display: grid;
+  gap: 10px;
+}
+
+.add-photo-container label {
+  font-size: 16px;
+}
+
+.add-photo-container input {
+  width: 100%;
+  padding: 8px;
+  font-size: 16px;
+}
+
+.add-photo-container button {
+  padding: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+}
+
+.photos-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.photo-item {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.photo-thumbnail {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 4px;
+  margin-right: 10px;
+}
+
+.photo-details {
+  flex: 1;
+}
+
+.photo-title {
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+.photo-id,
+.album-id {
+  font-size: 14px;
+  color: #666;
+}

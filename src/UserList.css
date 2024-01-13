@@ -1,0 +1,61 @@
+/* UserList.css */
+.user-list-container {
+  max-width: 600px;
+  margin: auto;
+  padding: 20px;
+}
+
+.user-list-header {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.search-container {
+  margin-bottom: 20px;
+}
+
+.search-container label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.search-container input {
+  width: 100%;
+  padding: 8px;
+  font-size: 16px;
+}
+
+.user-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.user-list-item {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+}
+
+.user-avatar {
+  border-radius: 50%;
+  margin-right: 15px;
+}
+
+.user-details {
+  flex: 1;
+}
+
+.user-name {
+  font-weight: bold;
+}
+
+.user-email {
+  color: #666;
+}
+
+.user-link {
+  text-decoration: none;
+  color: inherit;
+}

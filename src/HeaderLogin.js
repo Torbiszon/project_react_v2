@@ -1,13 +1,10 @@
-// HeaderLogin.js
 import React, { useState } from 'react';
-import './HeaderLogin.css'; // Import the new HeaderLogin.css file
-
+import './HeaderLogin.css'; 
 const HeaderLogin = ({ onLogin }) => {
   const [username, setUsername] = useState('');
 
   const handleLogin = () => {
     if (username.trim() !== '') {
-      // Assuming onLogin is a callback function provided by the parent component
       onLogin(username);
     }
   };

@@ -1,4 +1,3 @@
-// Header.js
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './Header.css';
@@ -36,7 +35,7 @@ const Header = ({ user, onLogout, onLogin }) => {
           </ul>
         </nav>
       </header>
-      {!user && <HeaderLogin onLogin={onLogin} />} {/* Display HeaderLogin only if user is not logged in */}
+      {!user && <HeaderLogin onLogin={onLogin} />} {}
     </div>
   );
 };

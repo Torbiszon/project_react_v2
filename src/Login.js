@@ -1,4 +1,3 @@
-// src/Login.js
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Login.css';
@@ -12,7 +11,7 @@ const Login = ({ onLogin, users }) => {
     const user = users.find((u) => u.username === username && u.password.toLowerCase() === password.toLowerCase());
     if (user) {
       onLogin(username);
-      navigate(`/users/${user.id}`); // Redirect to the user's profile page
+      navigate(`/users/${user.id}`);
     } else {
       alert('Invalid credentials');
     }

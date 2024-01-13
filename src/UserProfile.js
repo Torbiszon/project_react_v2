@@ -10,19 +10,13 @@ const UserProfile = ({ currentUser }) => {
   const [isEditing, setIsEditing] = useState(false);
 
   useEffect(() => {
-    // Fetch user details, posts, and photos based on the userId
     const fetchUserData = async () => {
-      // Fetch user details (replace with your API endpoint)
       const userResponse = await fetch(`https://jsonplaceholder.typicode.com/users/${userId}`);
       const userData = await userResponse.json();
       setUser(userData);
-
-      // Fetch user posts (replace with your API endpoint)
       const postsResponse = await fetch(`https://jsonplaceholder.typicode.com/posts?userId=${userId}`);
       const postsData = await postsResponse.json();
       setPosts(postsData);
-
-      // Fetch user photos (replace with your API endpoint)
       const photosResponse = await fetch(`https://jsonplaceholder.typicode.com/photos?userId=${userId}`);
       const photosData = await photosResponse.json();
       setPhotos(photosData);
@@ -36,11 +30,8 @@ const UserProfile = ({ currentUser }) => {
   };
 
   const handleSaveClick = () => {
-    // Add logic to save edited user details (update API endpoint or local state as needed)
     setIsEditing(false);
   };
-
-  // JSX to display user details, posts, and photos
 
   return (
     <div>
@@ -56,7 +47,7 @@ const UserProfile = ({ currentUser }) => {
                     Name:
                     <input type="text" value={user.name} onChange={(e) => setUser({ ...user, name: e.target.value })} />
                   </label>
-                  {/* Add other editable fields */}
+                  {}
                   <button onClick={handleSaveClick}>Save</button>
                 </div>
               ) : (
@@ -67,7 +58,7 @@ const UserProfile = ({ currentUser }) => {
         </div>
       )}
 
-      {/* Display user posts */}
+      {}
       <h3>Posts</h3>
       <ul>
         {posts.map((post) => (
@@ -75,7 +66,7 @@ const UserProfile = ({ currentUser }) => {
         ))}
       </ul>
 
-      {/* Display user photos */}
+        {}
       <h3>Photos</h3>
       <ul>
         {photos.map((photo) => (

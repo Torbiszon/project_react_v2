@@ -12,7 +12,7 @@ const Posts = () => {
           throw new Error('Failed to fetch posts');
         }
         const data = await response.json();
-        setPosts(data.slice(0, 10)); // Limit to the first 10 posts for demonstration
+        setPosts(data.slice(0, 10));
       } catch (error) {
         console.error('Error fetching posts:', error);
       }

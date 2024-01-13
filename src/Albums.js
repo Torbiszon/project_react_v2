@@ -1,4 +1,3 @@
-// src/Albums.js
 import React, { useState, useEffect } from 'react';
 import './Albums.css';
 
@@ -13,7 +12,7 @@ const Albums = () => {
           throw new Error('Failed to fetch albums');
         }
         const data = await response.json();
-        setAlbums(data.slice(0, 10)); // Limit to the first 10 albums for demonstration
+        setAlbums(data.slice(0, 10));
       } catch (error) {
         console.error('Error fetching albums:', error);
       }

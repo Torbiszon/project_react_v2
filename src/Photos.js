@@ -43,13 +43,12 @@ const Photos = () => {
       title,
       albumId,
       file: selectedFile,
-      id: photos.length + 1, // You should handle IDs more robustly in a real application
+      id: photos.length + 1,
       thumbnailUrl: URL.createObjectURL(selectedFile),
     };
 
     setPhotos((prevPhotos) => [...prevPhotos, newPhoto]);
 
-    // Clear the form fields
     setTitle('');
     setAlbumId('');
     setSelectedFile(null);

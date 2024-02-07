@@ -1,10 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, ChangeEvent } from 'react';
 import { Link } from 'react-router-dom';
 import './UserList.css';
 
-const UserList = () => {
-  const [users, setUsers] = useState([]);
-  const [searchQuery, setSearchQuery] = useState('');
+interface User {
+  id: number;
+  name: string;
+  email: string;
+}
+
+const UserList: React.FC = () => {
+  const [users, setUsers] = useState<User[]>([]);
+  const [searchQuery, setSearchQuery] = useState<string>('');
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -13,7 +19,7 @@ const UserList = () => {
         if (!response.ok) {
           throw new Error('Failed to fetch users');
         }
-        const data = await response.json();
+        const data: User[] = await response.json();
         setUsers(data);
       } catch (error) {
         console.error('Error fetching users:', error);
@@ -23,7 +29,7 @@ const UserList = () => {
     fetchUsers();
   }, []);
 
-  const handleSearchChange = (event) => {
+  const handleSearchChange = (event: ChangeEvent<HTMLInputElement>) => {
     setSearchQuery(event.target.value);
   };
 

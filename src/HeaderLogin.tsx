@@ -1,7 +1,12 @@
 import React, { useState } from 'react';
-import './HeaderLogin.css'; 
-const HeaderLogin = ({ onLogin }) => {
-  const [username, setUsername] = useState('');
+import './HeaderLogin.css';
+
+interface Props {
+  onLogin: (username: string) => void;
+}
+
+const HeaderLogin: React.FC<Props> = ({ onLogin }) => {
+  const [username, setUsername] = useState<string>('');
 
   const handleLogin = () => {
     if (username.trim() !== '') {

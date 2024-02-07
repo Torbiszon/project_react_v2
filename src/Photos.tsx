@@ -1,13 +1,20 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, ChangeEvent } from 'react';
 import './Photos.css';
 
-const Photos = () => {
-  const [photos, setPhotos] = useState([]);
-  const [searchPhotoId, setSearchPhotoId] = useState('');
-  const [searchAlbumId, setSearchAlbumId] = useState('');
-  const [title, setTitle] = useState('');
-  const [albumId, setAlbumId] = useState('');
-  const [selectedFile, setSelectedFile] = useState(null);
+interface Photo {
+  id: number;
+  albumId: number;
+  title: string;
+  thumbnailUrl: string;
+}
+
+const Photos: React.FC = () => {
+  const [photos, setPhotos] = useState<Photo[]>([]);
+  const [searchPhotoId, setSearchPhotoId] = useState<string>('');
+  const [searchAlbumId, setSearchAlbumId] = useState<string>('');
+  const [title, setTitle] = useState<string>('');
+  const [albumId, setAlbumId] = useState<string>('');
+  const [selectedFile, setSelectedFile] = useState<File | null>(null);
 
   useEffect(() => {
     const fetchPhotos = async () => {
@@ -16,7 +23,7 @@ const Photos = () => {
         if (!response.ok) {
           throw new Error('Failed to fetch photos');
         }
-        const data = await response.json();
+        const data: Photo[] = await response.json();
         setPhotos(data);
       } catch (error) {
         console.error('Error fetching photos:', error);
@@ -26,23 +33,26 @@ const Photos = () => {
     fetchPhotos();
   }, []);
 
-  const handlePhotoIdChange = (event) => {
+  const handlePhotoIdChange = (event: ChangeEvent<HTMLInputElement>) => {
     setSearchPhotoId(event.target.value);
   };
 
-  const handleAlbumIdChange = (event) => {
+  const handleAlbumIdChange = (event: ChangeEvent<HTMLInputElement>) => {
     setSearchAlbumId(event.target.value);
   };
 
-  const handlePhotoUpload = (e) => {
-    setSelectedFile(e.target.files[0]);
+  const handlePhotoUpload = (e: ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files.length > 0) {
+      setSelectedFile(e.target.files[0]);
+    }
   };
 
   const handleAddPhoto = () => {
-    const newPhoto = {
+    if (!selectedFile) return;
+
+    const newPhoto: Photo = {
       title,
-      albumId,
-      file: selectedFile,
+      albumId: parseInt(albumId),
       id: photos.length + 1,
       thumbnailUrl: URL.createObjectURL(selectedFile),
     };
@@ -54,8 +64,9 @@ const Photos = () => {
     setSelectedFile(null);
   };
 
-  const filteredPhotos = photos
-    .filter((photo) => photo.id.toString().includes(searchPhotoId) && photo.albumId.toString().includes(searchAlbumId));
+  const filteredPhotos = photos.filter((photo) =>
+    photo.id.toString().includes(searchPhotoId) && photo.albumId.toString().includes(searchAlbumId)
+  );
 
   return (
     <div className="photos-container">
@@ -87,13 +98,7 @@ const Photos = () => {
         <h2 className="add-photo-header">Add New Photo</h2>
         <form>
           <label htmlFor="title">Title:</label>
-          <input
-            type="text"
-            id="title"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-            required
-          />
+          <input type="text" id="title" value={title} onChange={(e) => setTitle(e.target.value)} required />
 
           <label htmlFor="albumId">Album ID:</label>
           <input

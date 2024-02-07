@@ -1,8 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import './Albums.css';
 
-const Albums = () => {
-  const [albums, setAlbums] = useState([]);
+interface Album {
+  id: number;
+  userId: number;
+  title: string;
+}
+
+const Albums: React.FC = () => {
+  const [albums, setAlbums] = useState<Album[]>([]);
 
   useEffect(() => {
     const fetchAlbums = async () => {

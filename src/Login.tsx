@@ -2,7 +2,18 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Login.css';
 
-const Login = ({ onLogin, users }) => {
+interface User {
+  id: number;
+  username: string;
+  password: string;
+}
+
+interface Props {
+  onLogin: (username: string) => void;
+  users: User[];
+}
+
+const Login: React.FC<Props> = ({ onLogin, users }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();

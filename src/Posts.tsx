@@ -1,8 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import './Posts.css';
 
-const Posts = () => {
-  const [posts, setPosts] = useState([]);
+interface Post {
+  id: number;
+  title: string;
+  body: string;
+}
+
+const Posts: React.FC = () => {
+  const [posts, setPosts] = useState<Post[]>([]);
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -11,7 +17,7 @@ const Posts = () => {
         if (!response.ok) {
           throw new Error('Failed to fetch posts');
         }
-        const data = await response.json();
+        const data: Post[] = await response.json();
         setPosts(data.slice(0, 10));
       } catch (error) {
         console.error('Error fetching posts:', error);

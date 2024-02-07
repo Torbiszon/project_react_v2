@@ -9,13 +9,19 @@ import Login from './Login';
 import UserProfile from './UserProfile';
 import './App.css';
 
-function App() {
-  const [currentUser, setCurrentUser] = useState(null);
+interface User {
+  id: number;
+  name: string;
+  // Add other properties if needed
+}
 
-  const handleLogin = async (username) => {
+function App(): JSX.Element {
+  const [currentUser, setCurrentUser] = useState<User | null>(null);
+
+  const handleLogin = async (username: string) => {
     try {
       const response = await fetch(`https://jsonplaceholder.typicode.com/users?name=${username}`);
-      const users = await response.json();
+      const users: User[] = await response.json();
 
       if (users.length > 0) {
         setCurrentUser(users[0]);

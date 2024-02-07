@@ -3,7 +3,13 @@ import { Link } from 'react-router-dom';
 import './Header.css';
 import HeaderLogin from './HeaderLogin';
 
-const Header = ({ user, onLogout, onLogin }) => {
+interface Props {
+  user: string | null;
+  onLogout: () => void;
+  onLogin: (username: string) => void;
+}
+
+const Header: React.FC<Props> = ({ user, onLogout, onLogin }) => {
   return (
     <div>
       <header>
@@ -35,7 +41,7 @@ const Header = ({ user, onLogout, onLogin }) => {
           </ul>
         </nav>
       </header>
-      {!user && <HeaderLogin onLogin={onLogin} />} {}
+      {!user && <HeaderLogin onLogin={onLogin} />}
     </div>
   );
 };
